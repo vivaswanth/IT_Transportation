@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MasterPage.master" CodeFile="Manprofile.aspx.cs" Inherits="Manprofile" %>
 
 <asp:Content ContentPlaceHolderID="ContentPlaceHolder1" runat="server" ID="content1">
-    <h3>Manager Profile</h3>
         <div class="container card">
             <h4>profile Information</h4>
             <table class="table">

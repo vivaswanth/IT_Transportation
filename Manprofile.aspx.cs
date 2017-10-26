@@ -21,7 +21,7 @@ public partial class Manprofile : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            string user = Session["username"].ToString();
+            string user = Session["email"].ToString();
             SqlConnection con = new SqlConnection(cons);
             SqlCommand com = new SqlCommand("SELECT * FROM Manager where Email = @username", con);
             com.Parameters.AddWithValue("@username", user);

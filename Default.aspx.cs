@@ -37,7 +37,10 @@ public partial class _Default : System.Web.UI.Page
             SqlDataReader reader = com.ExecuteReader();
             if(reader.Read())
             {
-                Session["username"] = user;
+                Session["username"] = reader.GetString(10);
+                Session["email"] = user;
+                Session["MID"] = reader.GetString(0);
+                Session["Location"] = reader.GetString(6);
                 Response.Redirect("Dashboard.aspx");
             }
             else
