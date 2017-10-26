@@ -126,7 +126,24 @@ public partial class ViewOrderDetails : System.Web.UI.Page
 
     protected void Alloc_truck(object sender, EventArgs e)
     {
-        
+        SqlConnection con = new SqlConnection(cons);
+        try
+        {
+            con.Open();
+            SqlCommand com = new SqlCommand("INSERT into TruckStatus() values()", con);
+            com.Parameters.AddWithValue("@id", Request.QueryString["id"]);
+            com.ExecuteNonQuery();
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Cancelled')", true);
+            Response.Redirect("Pastorders.aspx");
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            con.Close();
+        }
     }
 
 }
