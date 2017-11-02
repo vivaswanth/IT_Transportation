@@ -84,7 +84,7 @@
 		<div class="col-md-offset-2">
 			<asp:Button runat="server" ID="PBill" OnClick="GenerateBill" CssClass="btn btn-success" text="Produce Bill"></asp:Button>
 			<asp:Button runat="server" ID="BPayment" OnClick="Paydone" CssClass="btn btn-success" text="Payment Done"></asp:Button>
-			<asp:Button runat="server" ID="Alloc" CssClass="btn btn-primary" text="Allocate Truck"></asp:Button>
+			<asp:Button runat="server" ID="Alloc" OnClick="Alloc_truck" CssClass="btn btn-primary" text="Allocate Truck"></asp:Button>
 			<asp:Button runat="server" ID="BCancel" OnClick="Cancelorder" CssClass="btn btn-danger" text="Cancel Order"></asp:Button>
 		</div>
 	</div>

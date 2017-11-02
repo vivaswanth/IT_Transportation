@@ -29,13 +29,14 @@ public partial class Newtrucks : System.Web.UI.Page
     	try
     	{
     		con.Open();
-    		SqlCommand com = new SqlCommand("INSERT INTO Trucks(TruckID, LicenseNum, Status, OwnerID, Capacity, Model) Values(@tid, @lnum, @status, @owner, @capacity, @model)", con);
+    		SqlCommand com = new SqlCommand("INSERT INTO Trucks(TruckID, LicenseNum, Status, OwnerID, Capacity, Model, AverageWaitingTime) Values(@tid, @lnum, @status, @owner, @capacity, @model, @awt)", con);
 			com.Parameters.AddWithValue("@tid", TID.Text);
 			com.Parameters.AddWithValue("@lnum", TLinum.Text);
 			com.Parameters.AddWithValue("@status", TStatus.Text);
 			com.Parameters.AddWithValue("@owner", Session["MID"]);
 			com.Parameters.AddWithValue("@capacity", 500);
 			com.Parameters.AddWithValue("@model", TModel.Text);
+            com.Parameters.AddWithValue("@awt", DateTime.Now);
 			com.ExecuteNonQuery();
 			ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Truck Data Submitted Successfully')", true);
 

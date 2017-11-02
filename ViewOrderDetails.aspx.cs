@@ -126,24 +126,26 @@ public partial class ViewOrderDetails : System.Web.UI.Page
 
     protected void Alloc_truck(object sender, EventArgs e)
     {
-        SqlConnection con = new SqlConnection(cons);
+        string volume = null;
         try
         {
+            SqlConnection con = new SqlConnection(cons);
             con.Open();
-            SqlCommand com = new SqlCommand("INSERT into TruckStatus() values()", con);
+            SqlCommand com = new SqlCommand("SELECT * FROM Orders where OrderID=@id", con);
             com.Parameters.AddWithValue("@id", Request.QueryString["id"]);
-            com.ExecuteNonQuery();
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "alertMessage", "alert('Order Cancelled')", true);
-            Response.Redirect("Pastorders.aspx");
+            SqlDataReader reader = com.ExecuteReader();
+            while(reader.Read())
+            {
+                volume = reader.GetValue(5).ToString();
+            }
+
         }
         catch(Exception ex)
         {
 
         }
-        finally
-        {
-            con.Close();
-        }
+
+        Response.Redirect("Loadcargo.aspx?Id="+Server.UrlEncode(Request.QueryString["id"])+"&vol="+volume);
     }
 
 }
